@@ -1,76 +1,173 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>断网验证</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<style>
-	html,body{height: 100%;}
-	body{
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-		font-variant: tabular-nums;
-		font-size: 12px;
-		color: #333;
-		margin: 0px;
-	}
-	.main{
-		width: 100%;
-		height: 100%;
-		display: flex;
-    flex-direction:column;
-	}
-	.content, .header {
-		position: relative;
-		width: 100%;
-		padding-left: 20px;
-		padding-top: 10px;
-		box-sizing: border-box;
-	}
+		html,
+		body {
+			height: 100%;
+		}
 
-	.content{
-		overflow: auto;
-	}
-	.input-div{
-		display: inline-block;
-    line-height: 32px;
-    height: 32px;
-    margin-bottom: 8px;
-    padding-right: 30px;
-	}
-	.input-div input{
-		border-radius: 4px;
-		padding: 4px 23px 4px 8px;
-		height: 24px;
-		width: 300px;
-		line-height: 28px;
-		border-color: #d9d9d9;
-		border: 1px solid #d9d9d9;
-	}
-	p{
-		color: red;	
-	}
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+			font-variant: tabular-nums;
+			font-size: 12px;
+			color: #333;
+			margin: 0px;
+		}
 
-	span{
+		.main {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
 
-	}
+		.content,
+		.header {
+			position: relative;
+			width: 100%;
+			padding-left: 20px;
+			box-sizing: border-box;
+		}
 
-	button{
-		margin-right: 20px;
-	}
+		.content {
+			overflow: auto;
+		}
+
+		.input-div {
+			display: inline-block;
+			line-height: 32px;
+			height: 32px;
+			margin-bottom: 8px;
+			padding-right: 30px;
+		}
+
+		.input-div input {
+			border-radius: 4px;
+			padding: 4px 23px 4px 8px;
+			height: 24px;
+			width: 300px;
+			line-height: 28px;
+			border-color: #d9d9d9;
+			border: 1px solid #d9d9d9;
+		}
+
+		p {
+			color: red;
+		}
+
+		span {
+			display: inline-block;
+			width: 72px;
+		}
+
+
+		button {
+			margin-right: 8px;
+			padding: 0 12px;
+			border-color: #d9d9d9;
+			color: #535a69;
+			font-weight: 500;
+			white-space: nowrap;
+			cursor: pointer;
+			height: 28px;
+			border-radius: 4px;
+			float: right;
+			outline: none;
+		}
+
+		.button-div {
+			display: block;
+			margin-top: 4px;
+			height: 28px;
+			padding-right: 8px;
+		}
+
+		.switch-div {
+			display: inline-block;
+			position: relative;
+			line-height: 32px;
+			height: 32px;
+			margin-bottom: 8px;
+			padding-right: 30px;
+		}
+
+		.switch-div span {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+
+		.switch-div input {
+			position: absolute;
+			left: 60px;
+			top: 6px;
+		}
+
+		input[type='checkbox'].switch {
+			outline: none;
+			appearance: none;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			position: relative;
+			width: 40px;
+			height: 20px;
+			margin: 0px;
+			background: #ccc;
+			border-radius: 10px;
+			transition: border-color .3s, background-color .3s;
+		}
+
+		input[type='checkbox'].switch::after {
+			content: '';
+			display: inline-block;
+			width: 1rem;
+			height: 1rem;
+			border-radius: 50%;
+			background: #fff;
+			box-shadow: 0, 0, 2px, #999;
+			transition: .4s;
+			top: 2px;
+			position: absolute;
+			left: 2px;
+		}
+
+		input[type='checkbox'].switch:checked {
+			background: rgb(19, 206, 102);
+		}
+
+		/* 当input[type=checkbox]被选中时：伪元素显示下面样式 位置发生变化 */
+		input[type='checkbox'].switch:checked::after {
+			content: '';
+			position: absolute;
+			left: 55%;
+			top: 2px;
+		}
 	</style>
 </head>
+
 <body>
 	<div class="main">
 		<div class="header">
 			<p>允许的网络地址，如果不填则不做控制。</p>
-			<div class="input-div">网址1：<input id="input1"/></div>
-			<div class="input-div">网址2：<input id="input2"/></div>
-			<div class="input-div">网址3：<input id="input3"/></div>
-			<button id="confirm">确定</button>
-			<button id="clear">清除日志</button>
+			<div class="input-div"><span>网址1：</span><input id="input1" /></div>
+			<div class="input-div"><span>网址2：</span><input id="input2" /></div>
+			<div class="input-div"><span>网址3：</span><input id="input3" /></div>
+			<div class="switch-div"><span>启用拦截：</span><input type="checkbox" class="switch" id="offline"
+					onchange="swithChange(this.checked)"></div>
+			<div class="button-div">
+				<button id="clear">清除日志</button>
+				<button id="clearSet">重置</button>
+				<button id="confirm">确定</button>
+			</div>
 		</div>
 		<div id="content" class="content">
 		</div>
 	</div>
 	<script type="text/javascript" src="js/network.js"></script>
 </body>
+
 </html>

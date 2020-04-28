@@ -1,10 +1,23 @@
 {
 	"manifest_version": 2,
-	"name": "断网验证仅提示",
-  "version": "1.0.0",
-	"description": "断网验证仅提示",
+	"name": "断网验证",
+  "version": "1.1.0",
+	"description": "断网验证，增加了是否拦截的控制同时优化了代码逻辑",
 	"permissions": [
-    "storage"
-  ],
+		"storage",
+		"<all_urls>",
+    "webRequest",
+    "webRequestBlocking"
+	],
+	"background": {
+    "scripts": ["background.js"],
+    "persistent": true
+	},
+	"icons": {
+    "16": "images/icon.png",
+    "32": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
+  },
 	"devtools_page": "devTools/devtools.html"
 }
