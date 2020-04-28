@@ -2,12 +2,6 @@
 let nowAllowArr = [];
 let nowOffline = false;
 
-// 打印日志
-let logFun = function(str){
-  chrome.devtools.inspectedWindow('console.log('+str+')');
-}
-
-
 // 仅控制http、https、ws、wss
 let checkProtocol = function (url) {
 	let urlLower = url.toLowerCase()
