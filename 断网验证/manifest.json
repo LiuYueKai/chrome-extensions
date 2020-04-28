@@ -1,0 +1,10 @@
+{
+	"manifest_version": 2,
+	"name": "断网验证仅提示",
+  "version": "1.0.0",
+	"description": "断网验证仅提示",
+	"permissions": [
+    "storage"
+  ],
+	"devtools_page": "devTools/devtools.html"
+}
