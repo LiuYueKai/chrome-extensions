@@ -155,7 +155,7 @@ chrome.storage.local.get(['allowArr', 'offline'], function (result) {
 		allowArr,
 		offline
 	} = result
-	nowAllowArr = allowArr;
+	nowAllowArr = allowArr || [];
 	nowOffline = offline;
 	setValue(1, allowArr)
 	setValue(2, allowArr)

@@ -41,7 +41,7 @@ let checkAllow = function (url, allowArr) {
 // 接受来自network的消息
 chrome.runtime.onMessage.addListener(msg => {
   if(msg.type === 'allowArr'){
-    nowAllowArr = msg.allowArr
+    nowAllowArr = msg.allowArr || []
   }
   if(msg.type === 'offline'){
     nowOffline = msg.offline
@@ -81,6 +81,6 @@ chrome.storage.local.get(['allowArr', 'offline'], function (result,ss) {
 		allowArr,
 		offline
 	} = result
-	nowAllowArr = allowArr;
+	nowAllowArr = allowArr || [];
 	nowOffline = offline;
 })
